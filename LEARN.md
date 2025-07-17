@@ -53,6 +53,7 @@ open-source/
 ## 🔍 Code Structure Deep Dive
 
 ### HTML Structure (`index.html`)
+<img width="1156" height="606" alt="image" src="https://github.com/user-attachments/assets/157cfe38-e9d1-4530-9400-ce1968cd9f8b" />
 
 Our HTML follows semantic structure principles:
 
