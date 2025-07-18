@@ -4,7 +4,7 @@ A beginner-friendly Todo List web application built with vanilla HTML, CSS, and 
 
 ## 🌟 Features
 
-- ✅ Add new tasks
+- ✅ Add new task's
 - ✅ Mark tasks as completed
 - ✅ Delete tasks
 - ✅ View task statistics (total and completed)
