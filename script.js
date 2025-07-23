@@ -60,7 +60,9 @@ function renderTodos() {
             <input type="checkbox" class="checkbox" ${todo.completed ? 'checked' : ''} 
                    onchange="toggleTodo(${todo.id})">
             <span class="todo-text">${todo.text}</span>
-            <button class="delete-btn" onclick="deleteTodo(${todo.id})">Delete</button>
+            <button class="delete-btn ${todo.completed ? 'completed-btn' : ''}" onclick="deleteTodo(${todo.id})">
+                ${todo.completed ? 'Done' : 'Delete'}
+            </button>
         `;
         
         todoList.appendChild(li);

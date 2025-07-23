@@ -115,3 +115,11 @@ h1 {
     height: 18px;
     cursor: pointer;
 }
+
+.completed-btn {
+    background-color: #28a745 !important; 
+}
+
+.completed-btn:hover {
+    background-color: #218838 !important;
+}
