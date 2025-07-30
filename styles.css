@@ -1,117 +1,170 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f7fa;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
 
-.container {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-}
+        /* Main container for the app */
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
 
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 1.5rem;
-}
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
 
-.input-section {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 1.5rem;
-}
+        /* Input section for new tasks */
+        .input-section {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
 
-#todoInput {
-    flex: 1;
-    padding: 12px;
-    border: 2px solid #e1e8ed;
-    border-radius: 5px;
-    font-size: 16px;
-}
+        #todoInput {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
 
-#todoInput:focus {
-    outline: none;
-    border-color: #007bff;
-}
+        #todoInput:focus {
+            outline: none;
+            border-color: #3498db;
+        }
 
-#addBtn {
-    padding: 12px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
+        #addBtn {
+            padding: 12px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
 
-#addBtn:hover {
-    background-color: #0056b3;
-}
+        #addBtn:hover {
+            background-color: #2980b9;
+        }
 
-.todo-list {
-    list-style: none;
-    margin-bottom: 1.5rem;
-}
+        /* The list of todo items */
+        .todo-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
 
-.todo-item {
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    background-color: #f8f9fa;
-    margin-bottom: 8px;
-    border-radius: 5px;
-    border-left: 4px solid #007bff;
-}
+        .todo-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background-color: #ecf0f1;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            border-left: 5px solid #3498db;
+            transition: background-color 0.3s, opacity 0.3s;
+            cursor: grab; /* Indicates the item can be moved */
+        }
 
-.todo-item.completed {
-    text-decoration: line-through;
-    opacity: 0.6;
-    border-left-color: #28a745;
-}
+        .todo-item:active {
+            cursor: grabbing;
+        }
 
-.todo-text {
-    flex: 1;
-    margin-left: 10px;
-}
+        .todo-item.completed {
+            text-decoration: line-through;
+            color: #95a5a6;
+            opacity: 0.7;
+            border-left-color: #2ecc71;
+        }
+        
+        /* --- Drag and Drop Styles --- */
+        .todo-item.dragging {
+            opacity: 0.5;
+            background: #bdc3c7;
+        }
 
-.delete-btn {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
-}
+        .drag-over {
+            border-top: 2px dashed #3498db;
+        }
+        /* --- End Drag and Drop Styles --- */
 
-.delete-btn:hover {
-    background-color: #c82333;
-}
+        .todo-text {
+            flex: 1;
+            margin-left: 12px;
+        }
+        
+        /* Container for all action buttons */
+        .action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s;
+        }
 
-.stats {
-    display: flex;
-    justify-content: space-between;
-    color: #666;
-    font-size: 14px;
-    padding-top: 1rem;
-    border-top: 1px solid #e1e8ed;
-}
+        .todo-item:hover .action-buttons {
+            opacity: 1; /* Show on hover */
+        }
 
-.checkbox {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-}
+        .arrow-btn, .delete-btn {
+            background-color: #95a5a6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            transition: background-color 0.3s;
+        }
+
+        .arrow-btn:hover {
+            background-color: #7f8c8d;
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Stats section at the bottom */
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            color: #7f8c8d;
+            font-size: 14px;
+            padding-top: 1rem;
+            border-top: 1px solid #dfe6e9;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #2ecc71;
+        }
